@@ -5,22 +5,21 @@ import Form from 'react-bootstrap/Form';
 import { registerUser } from '../utils/auth'; // Update with path to registerUser
 
 function RegisterForm({ user, updateUser }) {
-  const [formData, setFormData] = useState({
-    bio: '',
-    uid: user.uid,
-  });
+  const currentDate = new Date();
+  const timestamp = currentDate.getTime();
+  console.warn(timestamp);
+
+  const userData = { joinDate: timestamp, uid: user.uid, hasAccess: false };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerUser(formData).then(() => updateUser(user.uid));
+    registerUser(userData).then(() => updateUser(user.uid));
   };
 
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Gamer Bio</Form.Label>
-        <Form.Control as="textarea" name="bio" required placeholder="Enter your Bio" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
-        <Form.Text className="text-muted">Let other gamers know a little bit about you...</Form.Text>
+        <Form.Label>Register for POS</Form.Label>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit

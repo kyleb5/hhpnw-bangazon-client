@@ -1,9 +1,22 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const { user } = useAuth();
+  // <Image src="https://i.imgur.com/RwB717Y.jpg" fluid />
+
+  if (!user.hasAccess) {
+    return (
+      <div className="text-center">
+        <h1>Access Denied</h1>
+        <p>You don't have access to view this webpage.</p>
+        <p>Please see a current MOD about access</p>
+      </div>
+    );
+  }
+
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -15,11 +28,11 @@ function Home() {
       }}
     >
       <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      <Link passHref href="/">
+        <Button variant="success">Create Order</Button>
+      </Link>
+      <Button variant="primary">View Orders</Button>
+      <Button variant="warning">View Revenue</Button>
     </div>
   );
 }
