@@ -28,7 +28,7 @@ function Home() {
       }}
     >
       <h1>Hello {user.fbUser.displayName}! </h1>
-      <Link passHref href="/">
+      <Link passHref href="/create-order">
         <Button variant="success">Create Order</Button>
       </Link>
       <Link passHref href="/view-order">

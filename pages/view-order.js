@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { Button, Row } from 'react-bootstrap';
+import Link from 'next/link';
 import { viewAllOrders } from '../utils/data/orderData';
-import ViewOrderCard from '../components/cards/viewOrderCard';
+import ViewOrderCard from '../components/cards/ViewOrderCard';
 
 function ViewOrder() {
   const [order, setOrders] = useState([]);
-  const router = useRouter();
+  // const router = useRouter();
 
   const getAllTheOrders = () => {
     viewAllOrders().then(setOrders);
@@ -25,9 +26,11 @@ function ViewOrder() {
   return (
     <>
       <div>
-        <Button style={{ marginTop: '5px' }} variant="success">
-          Create Order
-        </Button>
+        <Link passHref href="/create-order">
+          <Button style={{ marginTop: '5px' }} variant="success">
+            Create Order
+          </Button>
+        </Link>
       </div>
       <Row>
         {order.map((orders) => (
