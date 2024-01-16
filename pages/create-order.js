@@ -1,7 +1,8 @@
 import React from 'react';
+import OrderForm from '../components/forms/OrderForm';
 
 function CreateOrder() {
-  return <div>Create Order</div>;
+  return <OrderForm />;
 }
 
 export default CreateOrder;
