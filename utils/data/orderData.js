@@ -22,4 +22,16 @@ const viewSingleOrder = (id) =>
       .catch(reject);
   });
 
-export { viewAllOrders, viewSingleOrder };
+const deleteOrder = (id) =>
+  new Promise((resolve, reject) => {
+    fetch(`${clientCredentials.databaseURL}/orders/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+export { viewAllOrders, viewSingleOrder, deleteOrder };
