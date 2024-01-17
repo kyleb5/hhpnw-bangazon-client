@@ -38,6 +38,7 @@ function OrderForm({ obj }) {
 
     if (obj.id) {
       updateOrder({ ...formInput, id: obj.id });
+    } else {
       createOrder({ ...formInput, uid: user.uid, date: timestamp });
     }
 
