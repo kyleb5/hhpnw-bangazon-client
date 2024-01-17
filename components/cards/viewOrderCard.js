@@ -13,7 +13,8 @@ function ViewOrderCard({ viewOrderObj, onUpdate }) {
   const month = orderDate.getMonth() + 1;
   const day = orderDate.getDate();
 
-  const deleteThisOrder = () => {
+  const deleteThisOrder = (event) => {
+    event.preventDefault();
     if (window.confirm(`Delete ${viewOrderObj.orderName}?`)) {
       deleteOrder(viewOrderObj.id).then(() => onUpdate());
     }
@@ -33,7 +34,7 @@ function ViewOrderCard({ viewOrderObj, onUpdate }) {
             <Card.Text style={{ marginBottom: '0' }}>Phone: {viewOrderObj.customerPhone}</Card.Text>
           </div>
           {user.uid === viewOrderObj.uid && (
-            <Button variant="danger" onClick={() => deleteThisOrder(viewOrderObj.id)}>
+            <Button variant="danger" onClick={(event) => deleteThisOrder(event)}>
               Delete
             </Button>
           )}
