@@ -1,13 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Row } from 'react-bootstrap';
 import Link from 'next/link';
 import { viewSingleOrder } from '../../utils/data/orderData';
 import { useAuth } from '../../utils/context/authContext';
+import { viewOrderItems } from '../../utils/data/itemData';
+import ItemCard from '../../components/cards/ItemCard';
 
 export default function ViewOrderDetails() {
   const [orderDetails, setOrderDetails] = useState({});
+  const [orderItems, setOrderItems] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const { user } = useAuth();
@@ -20,8 +23,13 @@ export default function ViewOrderDetails() {
   useEffect(() => {
     if (id) {
       viewSingleOrder(id).then(setOrderDetails);
+      viewOrderItems(id).then(setOrderItems);
     }
   }, [id]);
+
+  const updateItems = () => {
+    viewOrderItems(id).then(setOrderItems);
+  };
 
   if (!user.hasAccess) {
     return (
@@ -32,8 +40,6 @@ export default function ViewOrderDetails() {
       </div>
     );
   }
-
-  console.warn(orderDetails);
 
   return (
     <div className="center-container">
@@ -54,6 +60,18 @@ export default function ViewOrderDetails() {
           <Button variant="primary">Edit Order</Button>
         </Link>
       )}
+      <div>
+        Items
+        {orderItems.length > 0 ? (
+          <Row>
+            {orderItems.map((orderItem) => (
+              <ItemCard key={orderItem.id} viewItemObj={orderItem} onUpdate={updateItems} />
+            ))}
+          </Row>
+        ) : (
+          <p>No items available</p>
+        )}
+      </div>
     </div>
   );
 }

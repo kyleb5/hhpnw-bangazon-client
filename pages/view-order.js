@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Button, Row } from 'react-bootstrap';
 import Link from 'next/link';
 import { viewAllOrders } from '../utils/data/orderData';
-import ViewOrderCard from '../components/cards/ViewOrderCard';
 import { useAuth } from '../utils/context/authContext';
+// eslint-disable-next-line import/no-unresolved
+import ViewOrderCard from '../components/cards/viewOrderCard';
 
 function ViewOrder() {
   const [order, setOrders] = useState([]);

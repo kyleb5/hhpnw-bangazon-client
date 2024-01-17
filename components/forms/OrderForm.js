@@ -38,11 +38,11 @@ function OrderForm({ obj }) {
 
     if (obj.id) {
       updateOrder({ ...formInput, id: obj.id });
+      router.push(`/order/${obj.id}`);
     } else {
       createOrder({ ...formInput, uid: user.uid, date: timestamp });
+      router.push('/view-order');
     }
-
-    router.push('/view-order');
   };
 
   return (
