@@ -7,7 +7,6 @@ import { registerUser } from '../utils/auth'; // Update with path to registerUse
 function RegisterForm({ user, updateUser }) {
   const currentDate = new Date();
   const timestamp = currentDate.getTime();
-  console.warn(timestamp);
 
   const userData = { joinDate: timestamp, uid: user.uid, hasAccess: false };
 
