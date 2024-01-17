@@ -80,7 +80,7 @@ OrderForm.propTypes = {
     id: PropTypes.number,
     customerEmail: PropTypes.string,
     customerPhone: PropTypes.number,
-    date: PropTypes.string,
+    date: PropTypes.number,
     open: PropTypes.bool,
     orderName: PropTypes.string,
     orderType: PropTypes.string,
