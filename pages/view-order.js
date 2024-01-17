@@ -21,8 +21,6 @@ function ViewOrder() {
     getAllTheOrders();
   };
 
-  console.warn(order);
-
   return (
     <>
       <div>

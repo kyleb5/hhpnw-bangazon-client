@@ -31,23 +31,17 @@ function OrderForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
-    console.warn(formInput);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (obj.id) {
-      updateOrder(formInput.then(() => router.push(`/order/${obj.id}`)));
-    } else {
-      const payload = { ...formInput, uid: user.uid, date: timestamp };
-      createOrder(payload).then(({ orderName }) => {
-        const patchPayload = { id: orderName };
-        updateOrder(patchPayload).then(() => {
-          router.push('/view-order');
-        });
-      });
-      console.warn(payload);
+      updateOrder({ ...formInput, id: obj.id });
+      createOrder({ ...formInput, uid: user.uid, date: timestamp });
     }
+
+    router.push('/view-order');
   };
 
   return (
