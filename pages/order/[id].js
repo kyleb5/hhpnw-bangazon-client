@@ -6,11 +6,13 @@ import Link from 'next/link';
 import { viewSingleOrder } from '../../utils/data/orderData';
 import { useAuth } from '../../utils/context/authContext';
 import { viewOrderItems } from '../../utils/data/itemData';
+import { getRevenueByOrderId } from '../../utils/data/revenueData';
 import ItemCard from '../../components/cards/ItemCard';
 
 export default function ViewOrderDetails() {
   const [orderDetails, setOrderDetails] = useState({});
   const [orderItems, setOrderItems] = useState([]);
+  const [revenueDetail, setRevenueDetail] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const { user } = useAuth();
@@ -24,8 +26,9 @@ export default function ViewOrderDetails() {
     if (id) {
       viewSingleOrder(id).then(setOrderDetails);
       viewOrderItems(id).then(setOrderItems);
+      if (orderDetails.open === false) getRevenueByOrderId(id).then(setRevenueDetail);
     }
-  }, [id]);
+  }, [id, orderDetails.open]);
 
   const updateItems = () => {
     viewOrderItems(id).then(setOrderItems);
@@ -66,12 +69,25 @@ export default function ViewOrderDetails() {
       <h1>Order Total: ${calculateTotalPrice()}</h1>
       {user.uid === orderDetails.uid && (
         <>
+          {orderDetails.open === false && (
+            <>
+              <h2>Order was paid with: {revenueDetail.paymentType}</h2>
+              <h2>Customer Tipped: {revenueDetail.tipAmount}</h2>
+            </>
+          )}
           <Link passHref href={`/order/edit/${orderDetails.id}`}>
             <Button variant="primary">Edit Order</Button>
           </Link>
-          <Link passHref href={`/order/add-items/${orderDetails.id}`}>
-            <Button variant="warning">Add Items</Button>
-          </Link>
+          {orderDetails.open === true && (
+            <>
+              <Link passHref href={`/order/add-items/${orderDetails.id}`}>
+                <Button variant="warning">Add Items</Button>
+              </Link>
+              <Link passHref href={`/order/close-order/${orderDetails.id}`}>
+                <Button variant="danger">Close Order</Button>
+              </Link>
+            </>
+          )}
         </>
       )}
       <div>
