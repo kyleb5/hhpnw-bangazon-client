@@ -23,7 +23,7 @@ function ItemCard({ viewItemObj, onUpdate }) {
           <Image src={viewItemObj.item_details.img} rounded style={{ width: '100px', height: '100px' }} draggable={false} />
         </div>
         <div style={{ marginLeft: '10px' }}>
-          <Card.Title style={{ marginBottom: '0' }}>Item: {viewItemObj.item_details.name}</Card.Title>
+          <Card.Title style={{ marginBottom: '0' }}>{viewItemObj.item_details.name}</Card.Title>
           <Card.Text>Price: {viewItemObj.item_details.price}</Card.Text>
           <Card.Text>Description: {viewItemObj.item_details.description}</Card.Text>
         </div>
