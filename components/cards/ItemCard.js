@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import { Button } from 'react-bootstrap';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Card from 'react-bootstrap/Card';
 import { useAuth } from '../../utils/context/authContext';
 import { deleteItemsFromOrder } from '../../utils/data/itemData';
+import { viewSingleOrder } from '../../utils/data/orderData';
 
 function ItemCard({ viewItemObj, onUpdate }) {
+  const router = useRouter();
+  const { id } = router.query;
+  const [orderDetails, setOrderDetails] = useState({});
   const { user } = useAuth();
+
+  useEffect(() => {
+    if (id) {
+      viewSingleOrder(id).then(setOrderDetails);
+    }
+  }, [id]);
 
   const deleteItemFromOrder = () => {
     if (window.confirm(`Delete ${viewItemObj.item_details.name}?`)) {
@@ -27,7 +37,7 @@ function ItemCard({ viewItemObj, onUpdate }) {
           <Card.Text>Price: {viewItemObj.item_details.price}</Card.Text>
           <Card.Text>Description: {viewItemObj.item_details.description}</Card.Text>
         </div>
-        {user.uid === viewItemObj.order_uid && (
+        {user.uid === viewItemObj.order_uid && orderDetails.open && (
           <Button variant="danger" onClick={() => deleteItemFromOrder(viewItemObj.id)}>
             Delete
           </Button>
@@ -36,7 +46,6 @@ function ItemCard({ viewItemObj, onUpdate }) {
     </Card>
   );
 }
-
 ItemCard.propTypes = {
   viewItemObj: PropTypes.shape({
     id: PropTypes.number.isRequired,

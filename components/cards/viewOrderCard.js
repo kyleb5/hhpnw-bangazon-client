@@ -33,7 +33,7 @@ function ViewOrderCard({ viewOrderObj, onUpdate }) {
             <Card.Text style={{ marginBottom: '0' }}>Email: {viewOrderObj.customerEmail}</Card.Text>
             <Card.Text style={{ marginBottom: '0' }}>Phone: {viewOrderObj.customerPhone}</Card.Text>
           </div>
-          {user.uid === viewOrderObj.uid && (
+          {user.uid === viewOrderObj.uid && viewOrderObj.open === true && (
             <Button variant="danger" onClick={(event) => deleteThisOrder(event)}>
               Delete
             </Button>
