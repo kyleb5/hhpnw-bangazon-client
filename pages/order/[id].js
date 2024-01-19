@@ -31,6 +31,14 @@ export default function ViewOrderDetails() {
     viewOrderItems(id).then(setOrderItems);
   };
 
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    orderItems.forEach((orderItem) => {
+      totalPrice += orderItem.item_details.price;
+    });
+    return totalPrice;
+  };
+
   if (!user.hasAccess) {
     return (
       <div className="text-center">
@@ -55,10 +63,16 @@ export default function ViewOrderDetails() {
           </Card.Text>
         </Card>
       </div>
+      <h1>Order Total: ${calculateTotalPrice()}</h1>
       {user.uid === orderDetails.uid && (
-        <Link passHref href={`/order/edit/${orderDetails.id}`}>
-          <Button variant="primary">Edit Order</Button>
-        </Link>
+        <>
+          <Link passHref href={`/order/edit/${orderDetails.id}`}>
+            <Button variant="primary">Edit Order</Button>
+          </Link>
+          <Link passHref href={`/order/add-items/${orderDetails.id}`}>
+            <Button variant="warning">Add Items</Button>
+          </Link>
+        </>
       )}
       <div>
         Items
