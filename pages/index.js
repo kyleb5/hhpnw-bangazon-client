@@ -34,7 +34,9 @@ function Home() {
       <Link passHref href="/view-order">
         <Button variant="primary">View Orders</Button>
       </Link>
-      <Button variant="warning">View Revenue</Button>
+      <Link passHref href="/revenue">
+        <Button variant="warning">View Revenue</Button>
+      </Link>
     </div>
   );
 }

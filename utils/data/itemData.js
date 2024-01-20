@@ -30,6 +30,19 @@ const viewOrderItems = (id) =>
       .catch(reject);
   });
 
+const viewAllOrderItems = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${clientCredentials.databaseURL}/ordermenuitem`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then(resolve)
+      .catch(reject);
+  });
+
 const deleteItemsFromOrder = (id) =>
   new Promise((resolve, reject) => {
     fetch(`${clientCredentials.databaseURL}/ordermenuitem/${id}`, {
@@ -56,4 +69,4 @@ const createItemToOrder = (payload) =>
       .catch(reject);
   });
 
-export { viewAllItems, viewOrderItems, getSingleItem, deleteItemsFromOrder, createItemToOrder };
+export { viewAllItems, viewOrderItems, getSingleItem, deleteItemsFromOrder, createItemToOrder, viewAllOrderItems };

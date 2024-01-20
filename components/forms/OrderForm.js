@@ -63,8 +63,9 @@ function OrderForm({ obj }) {
         </FloatingLabel>
         <Form.Label className="mr-4">Order Type</Form.Label>
         <Form.Group controlId="orderType" className="mb-3">
-          <Form.Check type="radio" label="Phone" name="orderType" value="phone" checked={formInput.orderType === 'phone'} onChange={handleChange} inline />
-          <Form.Check type="radio" label="In-Person" name="orderType" value="in-person" checked={formInput.orderType === 'in-person'} onChange={handleChange} inline />
+          <Form.Check type="radio" label="Phone" name="orderType" value="Phone" checked={formInput.orderType === 'Phone'} onChange={handleChange} inline />
+          <Form.Check type="radio" label="Mobile" name="orderType" value="Mobile" checked={formInput.orderType === 'Mobile'} onChange={handleChange} inline />
+          <Form.Check type="radio" label="In-Person" name="orderType" value="In-Person" checked={formInput.orderType === 'In-Person'} onChange={handleChange} inline />
         </Form.Group>
 
         <Button style={{ marginLeft: '50px' }} type="submit">
