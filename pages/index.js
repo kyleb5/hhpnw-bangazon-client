@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'react-bootstrap/Image';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const { user } = useAuth();
-  // <Image src="https://i.imgur.com/RwB717Y.jpg" fluid />
 
   if (!user.hasAccess) {
     return (
@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
+      className="text-center d-flex flex-column justify-content-center align-items-center"
       style={{
         height: '90vh',
         padding: '30px',
@@ -27,15 +27,22 @@ function Home() {
         margin: '0 auto',
       }}
     >
+      <Image src="https://i.imgur.com/RwB717Y.jpg" rounded style={{ width: '150px', height: '150px' }} draggable={false} />
       <h1>Hello {user.fbUser.displayName}! </h1>
       <Link passHref href="/create-order">
-        <Button variant="success">Create Order</Button>
+        <Button style={{ marginBottom: '5px' }} variant="success">
+          Create Order
+        </Button>
       </Link>
       <Link passHref href="/view-order">
-        <Button variant="primary">View Orders</Button>
+        <Button style={{ marginBottom: '5px' }} variant="primary">
+          View Orders
+        </Button>
       </Link>
       <Link passHref href="/revenue">
-        <Button variant="warning">View Revenue</Button>
+        <Button style={{ marginBottom: '5px' }} variant="warning">
+          View Revenue
+        </Button>
       </Link>
     </div>
   );
