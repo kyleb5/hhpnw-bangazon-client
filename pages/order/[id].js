@@ -64,6 +64,7 @@ export default function ViewOrderDetails() {
           <Card.Text style={{ marginBottom: '0' }}>
             Date Created: {month}-{day}-{year}
           </Card.Text>
+          <Card.Text>Type: {orderDetails.orderType}</Card.Text>
         </Card>
       </div>
       <h1>Order Total: ${calculateTotalPrice()}</h1>

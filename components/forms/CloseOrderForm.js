@@ -25,18 +25,13 @@ function CloseOrderForm({ obj }) {
     }
   }, [id]);
 
-  console.warn(orderDetails);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.warn(formInput);
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
-
-  console.warn(orderDetails);
 
   const handleSubmit = (e) => {
     e.preventDefault();
