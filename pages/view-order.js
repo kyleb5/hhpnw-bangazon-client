@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
-// import { useRouter } from 'next/router';
 import { Button, Row } from 'react-bootstrap';
 import Link from 'next/link';
 import { viewAllOrders } from '../utils/data/orderData';
@@ -11,7 +10,6 @@ import ViewOrderCard from '../components/cards/viewOrderCard';
 function ViewOrder() {
   const [order, setOrders] = useState([]);
   const { user } = useAuth();
-  // const router = useRouter();
 
   if (!user.hasAccess) {
     return (
