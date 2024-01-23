@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import Image from 'react-bootstrap/Image';
 import {
   Navbar, //
   Container,
@@ -13,6 +14,7 @@ export default function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
+        <Image style={{ marginRight: '25px' }} src="https://i.imgur.com/RwB717Y.jpg" width={64} height={64} roundedCircle />
         <Link passHref href="/">
           <Navbar.Brand>Hip Hop Pizza N Wings</Navbar.Brand>
         </Link>
