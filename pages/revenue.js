@@ -42,6 +42,7 @@ function Revenue() {
     // Calculate total revenue
     // .reduce loops through the array acc is for the starting point of the array 0. Easier to read compared to a loop
     const total = menuItems.reduce((acc, item) => (!item.order_open ? acc + item.price : acc), 0);
+    // if !item.order_open is true. if it is true, then acc + item.price
     setTotalRevenue(total);
 
     // Calculate total tip amount and format

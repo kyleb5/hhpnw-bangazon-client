@@ -35,7 +35,7 @@ function AddItemToOrderCard({ itemInOrderObj, onUpdate }) {
         </div>
         <div style={{ marginLeft: '10px' }}>
           <Card.Title style={{ marginBottom: '0' }}>{itemInOrderObj.name}</Card.Title>
-          <Card.Text>Price: {itemInOrderObj.price}</Card.Text>
+          <Card.Text style={{ marginBottom: '0px' }}>Price: {itemInOrderObj.price}</Card.Text>
           <Card.Text>Description: {itemInOrderObj.description}</Card.Text>
         </div>
         <Button variant="warning" onClick={() => addItemToOrder(id, itemInOrderObj.id)}>

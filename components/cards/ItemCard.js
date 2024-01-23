@@ -34,7 +34,7 @@ function ItemCard({ viewItemObj, onUpdate }) {
         </div>
         <div style={{ marginLeft: '10px' }}>
           <Card.Title style={{ marginBottom: '0' }}>{viewItemObj.item_details.name}</Card.Title>
-          <Card.Text>Price: {viewItemObj.item_details.price}</Card.Text>
+          <Card.Text style={{ marginBottom: '0' }}>Price: {viewItemObj.item_details.price}</Card.Text>
           <Card.Text>Description: {viewItemObj.item_details.description}</Card.Text>
         </div>
         {user.uid === viewItemObj.order_uid && orderDetails.open && (
