@@ -4,7 +4,7 @@
 - [Get Started](#getting-started)
 - [Starting the Project](#starting-the-project)
 ___
-## Getting Started
+## Getting Started - How to try out HHPNW Yourself
 ### Use Template
 #### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
 <img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
