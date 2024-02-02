@@ -1,6 +1,5 @@
 # Hip Hop Pizza N Wings POS System
 
-# Please Note after logging into via Google Auth, press the "Give Access" Button so you can start as if you were a worker
 
 ## Topics
 - [Get Started](#getting-started)
