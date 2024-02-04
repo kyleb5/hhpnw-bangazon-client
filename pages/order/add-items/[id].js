@@ -45,23 +45,33 @@ export default function AddItemsToOrder() {
 
   return (
     <div>
-      <h1>Order Total: {calculateTotalPrice()}</h1>
-      <h1>Available Items to Add</h1>
-      <Row>
-        {items.map((item) => (
-          <AddItemToOrderCard key={item.id} itemInOrderObj={item} onUpdate={updateItems} />
-        ))}
-      </Row>
-      <h1>Current Items</h1>
-      {orderItems.length > 0 ? (
-        <Row>
-          {orderItems.map((orderItem) => (
-            <ItemCard key={orderItem.id} viewItemObj={orderItem} onUpdate={updateItems} />
-          ))}
-        </Row>
-      ) : (
-        <p>None</p>
-      )}
+      <h1>Order Total: ${calculateTotalPrice()}</h1>
+
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-6">
+            <h1>Available Items to Add</h1>
+            <Row>
+              {items.map((item) => (
+                <AddItemToOrderCard key={item.id} itemInOrderObj={item} onUpdate={updateItems} />
+              ))}
+            </Row>
+          </div>
+
+          <div className="col-md-6">
+            <h1>Current Items</h1>
+            {orderItems.length > 0 ? (
+              <Row>
+                {orderItems.map((orderItem) => (
+                  <ItemCard key={orderItem.id} viewItemObj={orderItem} onUpdate={updateItems} />
+                ))}
+              </Row>
+            ) : (
+              <p>None</p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

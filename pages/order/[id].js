@@ -92,7 +92,7 @@ export default function ViewOrderDetails() {
         </>
       )}
       <div>
-        Items
+        <h2 style={{ marginTop: '5px' }}>Items</h2>
         {orderItems.length > 0 ? (
           <Row>
             {orderItems.map((orderItem) => (
